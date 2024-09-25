@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style>
+		body{margin: 0;
+			background-color: #f7fff5;}
+		#cursor{position: absolute;transform: translate(-50%, -50%); width: 30px; height: 30px;}
+		#rotate{animation: rotate 2s infinite linear;
+				width: 30px; height: 30px; background: blue;
+				position: absolute;}
+
+			@keyframes rotate{
+
+				to{transform: rotate(360deg)}
+			}
+	</style>
+</head>
+<body>
+	<div id="cursor">
+		<div id="rotate"></div>
+	</div>
+	<div style="position: relative; z-index: 1;"><img src="train.png" width="1800px"></div>
+	<div style="position: relative; left:-20px; top:-1225px; z-index: 2;"><img src="earpns.png" width="1500px"></div>
+	<div style="position: relative; left:200px; top:-1343px; z-index: 3;"><img id="ipod" src="ipod.png" width="300px"></div>
+	<div style="position: relative; left:35px; top:-2083px; z-index: 4;"><button id="suaceBut">Sure and Certain</button></div>
+	<div style="position: relative; left:35px; top:-2063px; z-index: 4;"><button id="catBut">Coffee & TV</button></div>
+	<div style="position: relative; left:35px; top:-2043px; z-index: 4;"><button id="lnoeBut">Last Night on Earth</button></div>
+	<div style="position: relative; left:35px; top:-2023px; z-index: 4;"><button id="oowkBut">Only Ones Who Know</button></div>
+	<div style="position: relative; left:35px; top:-2003px; z-index: 4;"><button id="esBut">Easy</button></div>
+	<div style="position: relative; left:326px; top:-1535px; z-index: 4; opacity: 0;"><button id="stopBut">STOP</button></div>
+	<audio id="suaceSnd" src="suace.mp3"></audio>
+	<audio id="catSnd" src="cat.mp3"></audio>
+	<audio id="lnoeSnd" src="lnoe.mp3"></audio>
+	<audio id="oowkSnd" src="oowk.mp3"></audio>
+	<audio id="esSnd" src="es.mp3"></audio>
+	<audio src="subway.wav" autoplay loop></audio>
+	<script type="text/javascript">
+		window.onmousemove = function(e){
+			cursor.style.left = e.clientX + "px";
+			cursor.style.top = e.clientY + "px";
+		}
+		var state = false
+		suaceBut.onclick = function(){
+			if (state == false){
+				catSnd.pause();
+				lnoeSnd.pause();
+				oowkSnd.pause();
+				esSnd.pause();
+				suaceSnd.play();
+				ipod.src = "ipodsuace.png"
+				suaceBut.style.backgroundColor = "#ff00a0";
+				state = true;
+			}
+			document.body.style.background = "#ff00a0";
+		}
+		catBut.onclick = function(){
+			if (state == false){
+				suaceSnd.pause();
+				lnoeSnd.pause();
+				oowkSnd.pause();
+				esSnd.pause();
+				catSnd.play();
+				ipod.src = "ipodcat.png"
+				catBut.style.backgroundColor = "#dcdd3b";
+				state = true;
+			}
+			document.body.style.background = "#dcdd3b";
+		}
+		lnoeBut.onclick = function(){
+			if (state == false){
+				suaceSnd.pause();
+				catSnd.pause();
+				oowkSnd.pause();
+				esSnd.pause();
+				lnoeSnd.play();
+				ipod.src = "ipodlnoe.png"
+				lnoeBut.style.backgroundColor = "#ff3a00";
+				state = true;
+			}
+			document.body.style.background = "#ff3a00";
+		}
+		oowkBut.onclick = function(){
+			if (state == false){
+				suaceSnd.pause();
+				catSnd.pause();
+				lnoeSnd.pause();
+				esSnd.pause();
+				oowkSnd.play();
+				ipod.src = "ipodoowk.png"
+				oowkBut.style.backgroundColor = "#958702";
+				state = true;
+			}
+			document.body.style.background = "#958702";
+		}
+		esBut.onclick = function(){
+			if (state == false){
+				suaceSnd.pause();
+				catSnd.pause();
+				lnoeSnd.pause();
+				oowkSnd.pause();
+				esSnd.play();
+				ipod.src = "ipodes.png"
+				esBut.style.backgroundColor = "#395eaf";
+				state = true;
+			}
+			document.body.style.background = "#395eaf";
+		}
+		stopBut.onclick = function(){
+			if (state == true){
+				suaceSnd.pause();
+				catSnd.pause();
+				lnoeSnd.pause();
+				oowkSnd.pause();
+				esSnd.pause();
+				state = false;
+			}
+		}
+	</script>
+</body>
+</html>
